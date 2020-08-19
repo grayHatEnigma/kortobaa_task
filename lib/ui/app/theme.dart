@@ -19,7 +19,7 @@ class AppTheme extends StatelessWidget {
         fontFamily: fontFamily,
         textTheme: TextTheme(
           headline6:
-              TextStyle(fontFamily: fontFamily, fontSize: sizeUtil.size(16.5)),
+              TextStyle(fontFamily: fontFamily, fontSize: sizeUtil.size(15.0)),
         ),
       ),
       child: navigator,
