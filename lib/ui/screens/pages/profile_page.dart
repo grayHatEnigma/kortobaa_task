@@ -9,6 +9,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // Change app bar title according to the current viewed tab,
     final titleBloc = Provider.of<TitleBloc>(context);
+    // FIXME : there is a strange behaviour here that some time the build is not called ?!
     titleBloc.changeTitle(AppTitle.profile);
     return Center(
       child: Text(
