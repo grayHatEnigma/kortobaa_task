@@ -58,17 +58,10 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        body: TabBarView(
           children: <Widget>[
-            Expanded(
-              child: TabBarView(
-                children: <Widget>[
-                  HomePage(),
-                  ProfilePage(),
-                ],
-              ),
-            ),
+            HomePage(),
+            ProfilePage(),
           ],
         ),
         floatingActionButton: FloatingActionButton(
