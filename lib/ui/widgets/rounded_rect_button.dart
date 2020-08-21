@@ -3,15 +3,12 @@ import '../../constants.dart';
 
 class RoundedRectButton extends StatelessWidget {
   final String text;
-  final double fontSize;
+
   final Function onTap;
   final bool isSelected;
 
   const RoundedRectButton(
-      {@required this.text,
-      @required this.fontSize,
-      @required this.onTap,
-      this.isSelected});
+      {@required this.text, @required this.onTap, this.isSelected});
   @override
   Widget build(BuildContext context) {
     final textColor = isSelected ? Colors.white : Colors.grey;
@@ -28,7 +25,8 @@ class RoundedRectButton extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: TextStyle(fontSize: fontSize, color: textColor),
+              style: TextStyle(
+                  fontSize: 14, color: textColor, fontWeight: FontWeight.w600),
             ),
           )),
     );

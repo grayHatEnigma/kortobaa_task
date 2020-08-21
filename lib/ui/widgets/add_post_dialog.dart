@@ -1,15 +1,3 @@
-/*
-
-TextField(
-              decoration: InputDecoration(
-                  labelText:
-                      FlutterI18n.translate(context, kTitleTextFieldHint)),
-              controller: titleController,
-              maxLength: 25,
-            ),
-
-*/
-
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:kortobaa_task/ui/widgets/rounded_rect_button.dart';
@@ -32,12 +20,18 @@ class _AddPostDialogState extends State<AddPostDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      scrollable: true,
       insetPadding: EdgeInsets.all(
         sizeUtil.width(20.0),
       ),
-      titlePadding: EdgeInsets.all(
-        sizeUtil.width(8.0),
+      titlePadding: EdgeInsets.only(
+        top: sizeUtil.height(8.0),
+        right: sizeUtil.width(8.0),
+        left: sizeUtil.width(8.0),
+      ),
+      contentPadding: EdgeInsets.only(
+        bottom: sizeUtil.height(8.0),
+        right: sizeUtil.width(15.0),
+        left: sizeUtil.width(15.0),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
@@ -48,27 +42,31 @@ class _AddPostDialogState extends State<AddPostDialog> {
       content: TextField(
         decoration: InputDecoration(
           labelText: FlutterI18n.translate(context, kTextHint),
-          labelStyle: TextStyle(fontSize: 13),
+          labelStyle: TextStyle(fontSize: 15),
         ),
         textAlign: TextAlign.justify,
         controller: textController,
         maxLines: 2,
-        maxLength: 125,
+        maxLength: 120,
       ),
       actions: [
         RoundedRectButton(
             text: FlutterI18n.translate(context, kCancel),
-            fontSize: 13,
             isSelected: false,
             onTap: () {
               Navigator.pop(context);
             }),
         RoundedRectButton(
             text: FlutterI18n.translate(context, kPublish),
-            fontSize: 13,
             isSelected: true,
             onTap: () {})
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    textController.dispose();
+    super.dispose();
   }
 }
