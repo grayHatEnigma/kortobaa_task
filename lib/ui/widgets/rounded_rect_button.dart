@@ -1,26 +1,34 @@
 import 'package:flutter/material.dart';
+import '../../constants.dart';
 
 class RoundedRectButton extends StatelessWidget {
   final String text;
   final double fontSize;
   final Function onTap;
+  final bool isSelected;
 
   const RoundedRectButton(
-      {@required this.text, @required this.fontSize, @required this.onTap});
+      {@required this.text,
+      @required this.fontSize,
+      @required this.onTap,
+      this.isSelected});
   @override
   Widget build(BuildContext context) {
+    final textColor = isSelected ? Colors.white : Colors.grey;
+    final btnColor = isSelected ? Theme.of(context).accentColor : Colors.white;
     return InkWell(
       onTap: onTap,
       child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          width: sizeUtil.width(80),
+          padding: EdgeInsets.symmetric(vertical: sizeUtil.height(5)),
           decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
-            borderRadius: BorderRadius.circular(15),
+            color: btnColor,
+            borderRadius: BorderRadius.circular(5),
           ),
           child: Center(
             child: Text(
               text,
-              style: TextStyle(fontSize: fontSize, color: Colors.white),
+              style: TextStyle(fontSize: fontSize, color: textColor),
             ),
           )),
     );

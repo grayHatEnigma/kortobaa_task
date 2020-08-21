@@ -3,5 +3,11 @@
     "Profile" : "حسابي" ,
     "Favorites":"المفضلة",
     "Settings": "الإعدادات" ,
-    "Edit Profile": "تعديل بياناتي"
+    "Edit Profile": "تعديل بياناتي",
+
+    "Publish": "نشر",
+    "Cancel":"تجاهل",
+    "Text Hint" : "اكتب تعليقاً حول الصورة",
+    "Upload Photo" : "اختر صورة"
+
 }

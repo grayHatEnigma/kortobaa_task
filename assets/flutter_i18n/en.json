@@ -4,6 +4,11 @@
 
     "Favorites":"Favorites",
     "Settings": "Settings" ,
-    "Edit Profile": "Edit Profile"
+    "Edit Profile": "Edit Profile",
+
+    "Publish": "Publish",
+    "Cancel":"Cancel",
+    "Text Hint" : "add photo description",
+    "Upload Photo" : "Upload photo"
 
 }

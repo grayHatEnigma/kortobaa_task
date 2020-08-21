@@ -11,3 +11,9 @@ const String kProfileTitle = "Profile";
 const String kFavorites = "Favorites";
 const String kSettings = "Settings";
 const String kEditProfile = "Edit Profile";
+
+// Add Post Dialog
+const String kPublish = "Publish";
+const String kCancel = "Cancel";
+const String kTextHint = "Text Hint";
+const String kUploadPhoto = "Upload Photo";

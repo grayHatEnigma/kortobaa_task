@@ -49,6 +49,7 @@ class PostCard extends StatelessWidget {
     );
   }
 
+  // Card Top
   Widget _buildCardTop(context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: sizeUtil.width(10.0)),

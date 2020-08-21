@@ -8,6 +8,7 @@ import 'pages/profile_page.dart';
 import '../../constants.dart';
 import '../../blocs/page_bloc.dart';
 import '../../blocs/localization_bloc.dart';
+import '../widgets/add_post_dialog.dart';
 
 class HomeScreen extends StatelessWidget {
   static final String routeName = 'home';
@@ -72,7 +73,12 @@ class HomeScreen extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.data == kHomeTitle) {
                 return FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AddPostDialog(),
+                    );
+                  },
                   child: Icon(Icons.add),
                 );
               }
