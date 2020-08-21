@@ -1,4 +1,7 @@
 {
     "Home" : "الرئيسية",
-    "Profile" : "حسابي"
+    "Profile" : "حسابي" ,
+    "Favorites":"المفضلة",
+    "Settings": "الإعدادات" ,
+    "Edit Profile": "تعديل بياناتي"
 }

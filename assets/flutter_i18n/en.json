@@ -1,5 +1,9 @@
 {
     "Home" : "Home",
-    "Profile" : "Profile"
+    "Profile" : "Profile", 
+
+    "Favorites":"Favorites",
+    "Settings": "Settings" ,
+    "Edit Profile": "Edit Profile"
 
 }

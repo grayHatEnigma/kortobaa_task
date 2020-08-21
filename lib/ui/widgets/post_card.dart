@@ -17,9 +17,6 @@ class PostCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(
-          color: Theme.of(context).primaryColor,
-        ),
         borderRadius: BorderRadius.circular(5.0),
         boxShadow: [
           BoxShadow(
@@ -46,7 +43,7 @@ class PostCard extends StatelessWidget {
             fit: BoxFit.fill,
           )),
           sizeUtil.sizedBoxWithHeight(8),
-          Text(post.userName),
+          Text(post.body),
         ],
       ),
     );
