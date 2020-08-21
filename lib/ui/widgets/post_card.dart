@@ -39,9 +39,14 @@ class PostCard extends StatelessWidget {
           _buildCardTop(context),
           sizeUtil.sizedBoxWithHeight(8),
           // image
-          Expanded(child: post.image),
+          Expanded(
+              child: Image.asset(
+            post.imageUrl,
+            width: double.infinity,
+            fit: BoxFit.fill,
+          )),
           sizeUtil.sizedBoxWithHeight(8),
-          Text(post.text),
+          Text(post.userName),
         ],
       ),
     );
@@ -66,7 +71,7 @@ class PostCard extends StatelessWidget {
                 backgroundColor: Colors.green,
               ),
               sizeUtil.sizedBoxWithWidth(8),
-              Text('grayHatEnigma'),
+              Text(post.userName),
             ],
           ),
           // buttons row

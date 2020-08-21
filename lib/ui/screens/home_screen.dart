@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:provider/provider.dart';
@@ -5,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
 import 'pages/profile_page.dart';
 import '../../constants.dart';
-import '../../blocs/title_bloc.dart';
+import '../../blocs/page_bloc.dart';
 import '../../blocs/localization_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,14 +14,14 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final titleBloc = Provider.of<TitleBloc>(context);
+    final pageBloc = Provider.of<PageBloc>(context);
     final localeBloc = Provider.of<LocalizationBloc>(context);
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: AppBar(
           title: StreamBuilder<String>(
-              stream: titleBloc.title,
+              stream: pageBloc.page,
               initialData: kHomeTitle,
               builder: (context, snapshot) {
                 return Text(
@@ -59,15 +60,24 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         body: TabBarView(
+          dragStartBehavior: DragStartBehavior.down,
+          physics: NeverScrollableScrollPhysics(),
           children: <Widget>[
             HomePage(),
             ProfilePage(),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.add),
-        ),
+        floatingActionButton: StreamBuilder<String>(
+            stream: pageBloc.page,
+            builder: (context, snapshot) {
+              if (snapshot.data == kHomeTitle) {
+                return FloatingActionButton(
+                  onPressed: () {},
+                  child: Icon(Icons.add),
+                );
+              }
+              return Container(width: 0.0, height: 0.0);
+            }),
       ),
     );
   }

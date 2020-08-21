@@ -7,6 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import '../../models/user.dart';
 import '../../models/post.dart';
 
+// TODO : Will Implement This Later
 // database table and column names
 
 // users table
@@ -85,13 +86,6 @@ class DatebaseProvider {
   // Database helper methods:
 
   // add a post to the database ' s posts table and return the auto-gen id for it
-  Future<int> insert(Post post) async {
-    Database db = await database;
-
-    int id = await db.insert(postsTable, post.toMap());
-    post.postId = id;
-    return id;
-  }
 
   // get a list of encoded to map posts
   Future<List<Map<String, dynamic>>> _queryAllPosts() async {
@@ -101,11 +95,5 @@ class DatebaseProvider {
   }
 
   // get list of decoded  transactions
-  Future<List<Post>> getAllPosts() async {
-    var maps = await _queryAllPosts();
 
-    return maps.map((map) {
-      return Post.fromMap(map);
-    }).toList();
-  }
 } // DatebaseProvider

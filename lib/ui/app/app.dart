@@ -10,7 +10,7 @@ import 'theme.dart';
 import 'routes.dart';
 import '../screens/splash_screen.dart';
 import '../../constants.dart';
-import '../../blocs/title_bloc.dart';
+import '../../blocs/page_bloc.dart';
 import '../../blocs/localization_bloc.dart';
 
 class App extends StatelessWidget {
@@ -21,7 +21,7 @@ class App extends StatelessWidget {
     return MultiProvider(
       providers: [
         Provider(
-          create: (_) => TitleBloc(),
+          create: (_) => PageBloc(),
           dispose: (_, bloc) => bloc.dispose(),
         ),
         Provider(

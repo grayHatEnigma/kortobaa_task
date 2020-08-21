@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
 import 'package:kortobaa_task/constants.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -7,20 +6,20 @@ import 'bloc_base.dart';
 
 /// Here I used The Rx-Stream approach in implementing the bloc pattern
 
-// *** This Bloc is responsible of changing app bar title according to the tab ***
+// *** This Bloc is responsible of changing app bar title / hiding FAB according to the tab ***
 // it may seem an over-kill to use bloc here as this could easily be done with setState
-// but I think it is necessary for future use cases to reduce the number of rebuilds
+// but I think it is necessary for future use cases to reduce the number of rebuilds.
 
-class TitleBloc implements BlocBase {
+class PageBloc implements BlocBase {
 // *** Controllers ***
   final _stateController = BehaviorSubject<String>();
-  Stream<String> get title => _stateController.stream;
+  Stream<String> get page => _stateController.stream;
 
-  final _eventsController = PublishSubject<AppTitle>();
-  Function(AppTitle) get changeTitle => _eventsController.sink.add;
+  final _eventsController = PublishSubject<MyPage>();
+  Function(MyPage) get changePage => _eventsController.sink.add;
 
 // *** BLoC Constructor ***
-  TitleBloc() {
+  PageBloc() {
     //supscripe to the incoming stream events
     _eventsController.stream.listen(_mapEventToState);
   }
@@ -28,10 +27,10 @@ class TitleBloc implements BlocBase {
 // *** Map Event To State ***
   void _mapEventToState(event) {
     switch (event) {
-      case AppTitle.home:
+      case MyPage.home:
         _stateController.sink.add(kHomeTitle);
         break;
-      case AppTitle.profile:
+      case MyPage.profile:
         _stateController.sink.add(kProfileTitle);
         break;
     }
@@ -46,4 +45,4 @@ class TitleBloc implements BlocBase {
 }
 
 // *** Events Enum ***
-enum AppTitle { home, profile }
+enum MyPage { home, profile }
