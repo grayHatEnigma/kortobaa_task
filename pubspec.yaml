@@ -22,7 +22,7 @@ dependencies:
   bloc: ^6.0.1
   
   # Responsiveness
-  device_preview: ^0.4.7
+  #device_preview: ^0.4.7
 
   # UI
   intl: ^0.16.1
@@ -32,12 +32,12 @@ dependencies:
   #json_annotation: ^3.0.1
 
   # Data
-  sqflite: ^1.3.1
-  path_provider: ^1.6.11
+  #sqflite: ^1.3.1
+  #path_provider: ^1.6.11
 
   # Location
-  location: ^3.0.2
-  geocoder: ^0.2.1
+  #location: ^3.0.2
+  #geocoder: ^0.2.1
 
   # Localization 
   flutter_i18n: ^0.16.2
@@ -45,11 +45,15 @@ dependencies:
   # Firebase Core
   firebase_core: ^0.5.0
   cloud_firestore: ^0.14.0+1
-  firebase_messaging: ^7.0.0
+  #firebase_messaging: ^7.0.0
   firebase_storage: ^4.0.0
   
   # Image Picker
   image_picker: ^0.6.7+4
+
+  # Device Info ( to generate unique token )
+  device_info: ^0.4.2+6
+
 
 dev_dependencies:
   flutter_test:

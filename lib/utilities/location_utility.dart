@@ -1,3 +1,5 @@
+// TODO : un-comment this when we need to add fetch-location feature to the app
+/*
 import 'package:geocoder/geocoder.dart';
 import 'package:location/location.dart';
 
@@ -59,3 +61,4 @@ class LocationUtility {
     _latLng = Coordinates(_locationData.latitude, _locationData.longitude);
   }
 }
+*/
