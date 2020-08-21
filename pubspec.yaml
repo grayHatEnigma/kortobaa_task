@@ -28,8 +28,8 @@ dependencies:
   intl: ^0.16.1
 
   # APIs
-  http: ^0.12.2
-  json_annotation: ^3.0.1
+  #http: ^0.12.2
+  #json_annotation: ^3.0.1
 
   # Data
   sqflite: ^1.3.1
@@ -42,7 +42,14 @@ dependencies:
   # Localization 
   flutter_i18n: ^0.16.2
 
+  # Firebase Core
+  firebase_core: ^0.5.0
+  cloud_firestore: ^0.14.0+1
+  firebase_messaging: ^7.0.0
+  firebase_storage: ^4.0.0
   
+  # Image Picker
+  image_picker: ^0.6.7+4
 
 dev_dependencies:
   flutter_test:

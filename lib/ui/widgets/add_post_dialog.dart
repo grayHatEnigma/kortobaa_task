@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_i18n/flutter_i18n.dart';
-import 'package:kortobaa_task/ui/widgets/rounded_rect_button.dart';
+
+import '../widgets/rounded_rect_button.dart';
 import '../widgets/upload_photo.dart';
 import '../../constants.dart';
 

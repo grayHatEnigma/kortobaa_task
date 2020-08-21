@@ -16,8 +16,8 @@ import '../../blocs/localization_bloc.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // This also can be used to 'provide' a 'BlocProvider' cause they both
-    // depends on Remi 's package
+    // This also can be used to 'provide' a 'BlocProvider' ( Flexi Angelov 's Package) cause they both
+    // depends on Remi 's Provider package underneath
     return MultiProvider(
       providers: [
         Provider(
@@ -59,7 +59,7 @@ class App extends StatelessWidget {
                   // Get Actual Device Screen Size
                   double height = MediaQuery.of(context).size.height;
                   double width = MediaQuery.of(context).size.width;
-                  // Update Screen Dimensions
+                  // Update Screen Dimensions in SizeUtil class
                   sizeUtil.updateScreenDimensions(height: height, width: width);
                   return AppTheme(
                     navigator: navigator,

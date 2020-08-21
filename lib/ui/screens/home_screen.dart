@@ -1,20 +1,20 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:provider/provider.dart';
 
 import 'pages/home_page.dart';
 import 'pages/profile_page.dart';
+import '../widgets/add_post_dialog.dart';
 import '../../constants.dart';
 import '../../blocs/page_bloc.dart';
 import '../../blocs/localization_bloc.dart';
-import '../widgets/add_post_dialog.dart';
 
 class HomeScreen extends StatelessWidget {
   static final String routeName = 'home';
 
   @override
   Widget build(BuildContext context) {
+    // BLoCs
     final pageBloc = Provider.of<PageBloc>(context);
     final localeBloc = Provider.of<LocalizationBloc>(context);
     return DefaultTabController(
@@ -61,7 +61,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         body: TabBarView(
-          dragStartBehavior: DragStartBehavior.down,
           physics: NeverScrollableScrollPhysics(),
           children: <Widget>[
             HomePage(),

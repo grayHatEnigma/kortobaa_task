@@ -5,20 +5,17 @@ import 'package:rxdart/rxdart.dart';
 
 import 'bloc_base.dart';
 
-/// This bloc will be responsible of changing and preserve app localization ( selected language ) state across the entire app.
+/// * This bloc will be responsible of changing and preserve app localization ( selected language ) state across the entire app. *
 class LocalizationBloc extends BlocBase {
   // *** State ***
   Locale _locale;
 
   // *** Controllers ***
-  // stateController
-  final _stateController = PublishSubject<Locale>();
 
+  final _stateController = PublishSubject<Locale>();
   Stream<Locale> get selectedLocale => _stateController.stream;
 
-  // eventController
   final _eventsController = PublishSubject<LocalizationEvent>();
-
   Function(LocalizationEvent) get setLocale => _eventsController.sink.add;
 
   // *** BLoC Constructor ***
