@@ -14,4 +14,12 @@ class Post {
     this.body,
     this.timestamp,
   });
+
+  Post.fromDocument(Map<String, dynamic> doc) {
+    userName = doc['userName'];
+    userId = doc['userId'];
+    body = doc['body'];
+    timestamp = doc['timestamp'];
+    imageUrl = doc['imageUrl'];
+  }
 }

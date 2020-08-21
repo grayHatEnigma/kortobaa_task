@@ -22,7 +22,7 @@ dependencies:
   bloc: ^6.0.1
   
   # Responsiveness
-  #device_preview: ^0.4.7
+  device_preview: ^0.4.7
 
   # UI
   intl: ^0.16.1
