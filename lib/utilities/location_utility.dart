@@ -1,4 +1,4 @@
-// TODO : un-comment this when we need to add fetch-location feature to the app
+//  un-comment this when we need to add fetch-location feature to the app
 /*
 import 'package:geocoder/geocoder.dart';
 import 'package:location/location.dart';

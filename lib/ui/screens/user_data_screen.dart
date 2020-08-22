@@ -149,8 +149,7 @@ class _UserDataScreenState extends State<UserDataScreen> {
     final email = emailController.text;
     final token = DeviceInfo().deviceToken;
 
-    final user =
-        User(name: name, email: email, imageUrl: '', deviceToken: token);
+    final user = User(name: name, email: email, deviceToken: token);
 
     BlocProvider.of<UserBloc>(context).add(CreateUser(user));
     print('user name: $name\nuser email: $email');

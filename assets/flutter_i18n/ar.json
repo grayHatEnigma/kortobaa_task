@@ -18,7 +18,8 @@
     "Enter Name" : "الاسم",
     "Enter Email" : "البريد الاكتروني",
     "Save" : "حفظ",
-    "Please Enter a valid data first" : "ادخل بيانات صحيحة أولاً"
+    "Please Enter a valid data first" : "ادخل بيانات صحيحة أولاً",
+    "Not Implemented Yet" : "قيد التطوير" 
 
 
 }

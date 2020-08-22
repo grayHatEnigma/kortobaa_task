@@ -30,3 +30,5 @@ const String kSaveButton = "Save";
 const String kDataScreenToast = "Please enter valid data first";
 // No Image
 const String kNoImage = "No Image Available";
+
+const String kNotImplemented = "Not Implemented Yet";

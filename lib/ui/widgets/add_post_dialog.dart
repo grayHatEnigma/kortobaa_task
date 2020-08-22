@@ -20,6 +20,8 @@ class AddPostDialog extends StatefulWidget {
 
 class _AddPostDialogState extends State<AddPostDialog> {
   TextEditingController textController;
+  // This should come from the Upload widget as a callback maybe
+  // TODO : post image url callback
   String _imageUrl;
   @override
   void initState() {

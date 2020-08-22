@@ -1,11 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kortobaa_task/ui/screens/decision_screen.dart';
 
 import 'package:provider/provider.dart';
 
 import '../screens/splash_screen.dart';
 import '../screens/user_data_screen.dart';
 import '../screens/home_screen.dart';
+import '../screens/decision_screen.dart';
 import '../../blocs/post_list/post_list_bloc.dart';
 import '../../blocs/post/post_bloc.dart';
 import '../../blocs/page_bloc.dart';

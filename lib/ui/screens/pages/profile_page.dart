@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:kortobaa_task/models/user.dart';
+
 import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
@@ -51,7 +53,7 @@ class ProfilePage extends StatelessWidget {
                         size: sizeUtil.size(50),
                       )
                     : Container(),
-                backgroundColor: Colors.green,
+                backgroundColor: Colors.grey,
                 backgroundImage:
                     user.imageUrl != null ? NetworkImage(user.imageUrl) : null,
               ),
@@ -71,15 +73,29 @@ class ProfilePage extends StatelessWidget {
 
         sizeUtil.sizedBoxWithHeight(profileSize),
         // Profile Buttons Row
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ProfileButton(icon: Icons.star, onTap: null, text: kFavorites),
-            ProfileButton(icon: Icons.settings, onTap: null, text: kSettings),
-            ProfileButton(icon: Icons.edit, onTap: null, text: kEditProfile)
-          ],
+        InkWell(
+          // This because the whole row is not implemented yet
+          onTap: () => _buildSnackBar(context),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ProfileButton(icon: Icons.star, onTap: null, text: kFavorites),
+              ProfileButton(icon: Icons.settings, onTap: null, text: kSettings),
+              ProfileButton(icon: Icons.edit, onTap: null, text: kEditProfile)
+            ],
+          ),
         ),
       ],
     );
   }
 }
+
+void _buildSnackBar(context) => Scaffold.of(context).showSnackBar(SnackBar(
+      backgroundColor: Theme.of(context).accentColor,
+      content: Text(
+        FlutterI18n.translate(context, kNotImplemented),
+        style:
+            Theme.of(context).textTheme.headline6.copyWith(color: Colors.white),
+        textAlign: TextAlign.center,
+      ),
+    ));

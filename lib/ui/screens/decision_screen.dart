@@ -6,6 +6,10 @@ import 'package:kortobaa_task/utilities/device_info_utility.dart';
 
 import 'home_screen.dart';
 
+/// Sole purpose of this screen is to decide where to go next
+/// if user is already registered on the cloud navigate to Home
+/// else Navigate to UserData Screen to fetch data
+
 class DecisionScreen extends StatelessWidget {
   static final routeName = 'decision';
 
