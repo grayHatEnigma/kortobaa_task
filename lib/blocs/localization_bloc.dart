@@ -35,15 +35,8 @@ class LocalizationBloc extends BlocBase {
       print('English is selected');
       _locale = Locale('en');
       _stateController.sink.add(_locale);
-    } else if (event == LocalizationEvent.Ar) {
-      {
-        _locale = Locale('ar');
-        _stateController.sink.add(_locale);
-      }
     }
   }
-
-  // *** Helpers ***
 
   // *** Dispose ***
   @override
