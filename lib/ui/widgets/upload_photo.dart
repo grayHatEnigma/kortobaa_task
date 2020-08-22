@@ -10,8 +10,6 @@ class UploadPhoto extends StatefulWidget {
 
   const UploadPhoto({this.chosenImage});
 
-  // post_id should be passed through the constructor
-  // cause it will be used in creating image url path in firebase stoarage
   @override
   _UploadPhotoState createState() => _UploadPhotoState();
 }

@@ -39,34 +39,34 @@ class PostCard extends StatelessWidget {
           _buildCardTop(context),
           sizeUtil.sizedBoxWithHeight(8),
           // image
-          if (post.imageUrl != null)
-            ExtendedImage.network(
-              post.imageUrl,
-              width: double.infinity,
-              fit: BoxFit.contain,
-              cache: false,
-              loadStateChanged: (ExtendedImageState state) {
-                switch (state.extendedImageLoadState) {
-                  case LoadState.loading:
-                    return Center(
-                      child: SizedBox(
-                          width: sizeUtil.width(20),
-                          height: sizeUtil.height(20),
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                          )),
-                    );
-                    break;
-                  case LoadState.completed:
-                    return state.completedWidget;
-                    break;
+          post.imageUrl != null
+              ? ExtendedImage.network(
+                  post.imageUrl,
+                  width: double.infinity,
+                  fit: BoxFit.contain,
+                  cache: false,
+                  loadStateChanged: (ExtendedImageState state) {
+                    switch (state.extendedImageLoadState) {
+                      case LoadState.loading:
+                        return Center(
+                          child: SizedBox(
+                              width: sizeUtil.width(20),
+                              height: sizeUtil.height(20),
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                              )),
+                        );
+                        break;
+                      case LoadState.completed:
+                        return state.completedWidget;
+                        break;
 
-                  default:
-                    return NoImageWidget();
-                }
-              },
-            ),
-          if (post.imageUrl == null) NoImageWidget(),
+                      default:
+                        return NoImageWidget();
+                    }
+                  },
+                )
+              : NoImageWidget(),
 
           sizeUtil.sizedBoxWithHeight(8),
           Text(post.body),

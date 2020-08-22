@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kortobaa_task/blocs/post/post_bloc.dart';
-import 'package:kortobaa_task/blocs/user/user_bloc.dart';
-import 'package:kortobaa_task/utilities/device_info_utility.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
@@ -15,6 +12,8 @@ import 'routes.dart';
 import '../screens/splash_screen.dart';
 import '../../constants.dart';
 import '../../blocs/localization_bloc.dart';
+import '../../blocs/post/post_bloc.dart';
+import '../../blocs/user/user_bloc.dart';
 
 class App extends StatelessWidget {
   @override

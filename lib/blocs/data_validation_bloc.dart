@@ -18,6 +18,7 @@ class DataValidationBloc with Transformers implements BlocBase {
   Stream<String> get name => _nameController.stream.transform(nameValidator);
 
   // save button stream
+  // it will evaluate to true only when the two streams has valid inputs
   Stream<bool> get saveValid => Rx.combineLatest2(email, name, (e, p) => true);
   // This is the power of Rx Library I missed this in Flexi's Bloc
 

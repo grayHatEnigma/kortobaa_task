@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kortobaa_task/models/user.dart';
 import 'package:uuid/uuid.dart';
 
 import '../widgets/rounded_rect_button.dart';
 import '../widgets/upload_photo.dart';
 import '../../constants.dart';
 import '../../models/post.dart';
+import '../../models/user.dart';
 import '../../blocs/post/post_bloc.dart';
 
 class AddPostDialog extends StatefulWidget {
@@ -25,10 +25,13 @@ class AddPostDialog extends StatefulWidget {
 class _AddPostDialogState extends State<AddPostDialog> {
   TextEditingController textController;
 
+  // Image Files
   File _imageFile;
   String _imageUrl;
 
+  // a flag to show progress bar while uploading
   bool isUploading = false;
+
   @override
   void initState() {
     textController = TextEditingController();
@@ -104,6 +107,8 @@ class _AddPostDialogState extends State<AddPostDialog> {
                   Navigator.pop(context);
                 })
           ],
+
+          // Show above the whole dialog
         ),
         if (isUploading)
           Center(

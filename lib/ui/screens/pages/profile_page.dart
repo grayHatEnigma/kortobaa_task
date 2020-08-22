@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
-import 'package:kortobaa_task/models/user.dart';
 
 import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
 import '../../../blocs/page_bloc.dart';
 import '../../widgets/profile_button.dart';
+import '../../../models/user.dart';
 
 class ProfilePage extends StatelessWidget {
   final User user;

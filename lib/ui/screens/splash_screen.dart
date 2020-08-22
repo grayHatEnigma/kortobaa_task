@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:kortobaa_task/ui/screens/decision_screen.dart';
+import 'decision_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static final routeName = 'splash';

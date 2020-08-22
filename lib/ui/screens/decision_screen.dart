@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kortobaa_task/blocs/user/user_bloc.dart';
-import 'package:kortobaa_task/ui/screens/user_data_screen.dart';
-import 'package:kortobaa_task/utilities/device_info_utility.dart';
 
 import 'home_screen.dart';
+import 'user_data_screen.dart';
+import '../../blocs/user/user_bloc.dart';
+import '../../utilities/device_info_utility.dart';
 
 /// Sole purpose of this screen is to decide where to go next
 /// if user is already registered on the cloud navigate to Home
