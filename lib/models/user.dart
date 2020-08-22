@@ -14,17 +14,17 @@ class User {
 
   User.fromDocument(Map<String, dynamic> doc) {
     name = doc['name'];
-    userId = doc['userId'];
     email = doc['email'];
     imageUrl = doc['imageUrl'];
+    deviceToken = doc['deviceToken'];
   }
 
   Map<String, dynamic> toDocument() {
     return {
       'name': name,
-      'userId': userId,
       'email': email,
-      'imageUrl': imageUrl
+      'imageUrl': imageUrl,
+      'deviceToken': deviceToken
     };
   }
 }

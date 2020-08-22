@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kortobaa_task/models/user.dart';
 
 import '../widgets/rounded_rect_button.dart';
 import '../widgets/upload_photo.dart';
@@ -10,12 +11,16 @@ import '../../models/post.dart';
 import '../../blocs/post/post_bloc.dart';
 
 class AddPostDialog extends StatefulWidget {
+  final User user;
+
+  AddPostDialog({this.user});
   @override
   _AddPostDialogState createState() => _AddPostDialogState();
 }
 
 class _AddPostDialogState extends State<AddPostDialog> {
   TextEditingController textController;
+  String _imageUrl;
   @override
   void initState() {
     textController = TextEditingController();
@@ -67,11 +72,12 @@ class _AddPostDialogState extends State<AddPostDialog> {
             onTap: () {
               // Create a post object
               final Post post = Post(
-                  body: 'LOVE ANIME',
+                  body: textController.text,
                   imageUrl:
                       'https://occ-0-1722-1723.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABeV0Af4XqVIi8qSUEeV_llbkH9B-TyiTGukOX7pSFxAuAyoc9q-e--ErSFvK4dLjE7tYDAr1L0PXAja28cDsLWwGdA_A.jpg',
-                  userName: 'Mohamed Salama',
-                  userId: '0',
+                  userName: widget.user.name,
+                  userId: widget.user.userId,
+                  userImageUrl: widget.user.imageUrl,
                   date: DateTime.now());
 
               // ADD THE POST

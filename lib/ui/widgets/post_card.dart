@@ -86,12 +86,17 @@ class PostCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               CircleAvatar(
-                child: Icon(
-                  Icons.account_circle,
-                  color: Colors.white,
-                  size: sizeUtil.size(27),
-                ),
+                child: post.userImageUrl == null
+                    ? Icon(
+                        Icons.account_circle,
+                        color: Colors.white,
+                        size: sizeUtil.size(20),
+                      )
+                    : Container(),
                 backgroundColor: Colors.green,
+                backgroundImage: post.userImageUrl != null
+                    ? NetworkImage(post.userImageUrl)
+                    : null,
               ),
               sizeUtil.sizedBoxWithWidth(8),
               Text(post.userName),

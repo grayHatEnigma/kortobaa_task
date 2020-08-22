@@ -4,19 +4,12 @@ import 'package:provider/provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../constants.dart';
-import '../../../utilities/device_info_utility.dart';
 import '../../widgets/post_card.dart';
 import '../../../blocs/page_bloc.dart';
 import '../../../blocs/post_list/post_list_bloc.dart';
 import '../../../models/post.dart';
 
 class HomePage extends StatelessWidget {
-  void testInfo() async {
-    print('testing info ...');
-    String id = await DeviceInfo.getId();
-    print('Device Id : $id');
-  }
-
   @override
   Widget build(BuildContext context) {
     // Change app bar title according to the current viewed tab,

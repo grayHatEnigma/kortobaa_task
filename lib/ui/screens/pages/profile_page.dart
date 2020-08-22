@@ -7,6 +7,9 @@ import '../../../blocs/page_bloc.dart';
 import '../../widgets/profile_button.dart';
 
 class ProfilePage extends StatelessWidget {
+  final User user;
+
+  ProfilePage({@required this.user});
   @override
   Widget build(BuildContext context) {
     // Change app bar title according to the current viewed tab,
@@ -14,10 +17,6 @@ class ProfilePage extends StatelessWidget {
 
     // Profile Image Size
     double profileSize = 55;
-
-    // User Object should be passed from constructor
-    final user = User(name: 'grayHatEnigma', email: 'salama92work@gmail.com');
-
     return Column(
       children: [
         Stack(
@@ -45,12 +44,16 @@ class ProfilePage extends StatelessWidget {
               right: sizeUtil.screenWidth / 2 - sizeUtil.width(profileSize),
               child: CircleAvatar(
                 radius: sizeUtil.width(profileSize),
-                child: Icon(
-                  Icons.account_circle,
-                  color: Colors.white,
-                  size: sizeUtil.size(50),
-                ),
+                child: user.imageUrl == null
+                    ? Icon(
+                        Icons.account_circle,
+                        color: Colors.white,
+                        size: sizeUtil.size(50),
+                      )
+                    : Container(),
                 backgroundColor: Colors.green,
+                backgroundImage:
+                    user.imageUrl != null ? NetworkImage(user.imageUrl) : null,
               ),
             ),
           ],

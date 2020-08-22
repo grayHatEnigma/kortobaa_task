@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kortobaa_task/constants.dart';
-import 'package:kortobaa_task/ui/screens/user_data_screen.dart';
 
-import 'home_screen.dart';
+import 'package:kortobaa_task/ui/screens/decision_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static final routeName = 'splash';
@@ -29,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     controller.addListener(() {
       if (controller.isCompleted) {
-        Navigator.pushReplacementNamed(context, UserDataScreen.routeName);
+        Navigator.pushReplacementNamed(context, DecisionScreen.routeName);
       }
     });
   }

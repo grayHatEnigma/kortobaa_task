@@ -4,6 +4,7 @@ class Post {
   String postId;
   String userId;
   String userName;
+  String userImageUrl;
   String imageUrl;
   String body;
   DateTime date;
@@ -11,6 +12,7 @@ class Post {
   Post({
     this.userId,
     this.userName,
+    this.userImageUrl,
     this.postId,
     this.imageUrl,
     this.body,
@@ -20,6 +22,7 @@ class Post {
   Post.fromDocument(Map<String, dynamic> doc) {
     userName = doc['userName'];
     userId = doc['userId'];
+    userImageUrl = doc['userImageUrl'];
     body = doc['body'];
     date = doc['timestamp'].toDate();
     imageUrl = doc['imageUrl'];
@@ -29,6 +32,7 @@ class Post {
     return {
       'userName': userName,
       'userId': userId,
+      'userImageUrl': userImageUrl,
       'body': body,
       'timestamp': Timestamp.fromDate(date),
       'imageUrl': imageUrl

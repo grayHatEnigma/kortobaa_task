@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_i18n/flutter_i18n.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:kortobaa_task/blocs/user/user_bloc.dart';
+import 'package:kortobaa_task/models/user.dart';
+import 'package:kortobaa_task/utilities/device_info_utility.dart';
 import 'package:provider/provider.dart';
 import '../../constants.dart';
 import '../../blocs/data_validation_bloc.dart';
@@ -29,7 +33,9 @@ class _UserDataScreenState extends State<UserDataScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // BLoCs
     final validationBloc = Provider.of<DataValidationBloc>(context);
+
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -105,7 +111,7 @@ class _UserDataScreenState extends State<UserDataScreen> {
                           if (snapshot.hasData) {
                             // This should send the data to the api
                             // then navigate to home screen
-                            // TODO : save user info somewhere
+                            _saveUserData(context);
                             Navigator.pushReplacementNamed(
                                 context, HomeScreen.routeName);
                             return;
@@ -135,6 +141,19 @@ class _UserDataScreenState extends State<UserDataScreen> {
         ),
       ),
     );
+  }
+
+  // Save User Data
+  _saveUserData(BuildContext context) {
+    final name = nameController.text;
+    final email = emailController.text;
+    final token = DeviceInfo().deviceToken;
+
+    final user =
+        User(name: name, email: email, imageUrl: '', deviceToken: token);
+
+    BlocProvider.of<UserBloc>(context).add(CreateUser(user));
+    print('user name: $name\nuser email: $email');
   }
 
   @override

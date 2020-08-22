@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kortobaa_task/ui/screens/decision_screen.dart';
 
 import 'package:provider/provider.dart';
 
@@ -12,6 +13,7 @@ import '../../blocs/data_validation_bloc.dart';
 
 final routes = {
   SplashScreen.routeName: (context) => SplashScreen(),
+  DecisionScreen.routeName: (context) => DecisionScreen(),
   UserDataScreen.routeName: (context) => Provider(
         create: (_) => DataValidationBloc(),
         dispose: (_, bloc) => bloc.dispose(),
