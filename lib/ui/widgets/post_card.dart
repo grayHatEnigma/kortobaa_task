@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kortobaa_task/models/post.dart';
+
+import 'package:extended_image/extended_image.dart';
+
+import '../widgets/no_image.dart';
+import '../../models/post.dart';
 import '../../constants.dart';
 
 class PostCard extends StatelessWidget {
@@ -9,7 +13,7 @@ class PostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      //  height: 300,
       margin: EdgeInsets.symmetric(
           horizontal: sizeUtil.width(25), vertical: sizeUtil.height(10)),
       padding: EdgeInsets.symmetric(
@@ -36,12 +40,39 @@ class PostCard extends StatelessWidget {
           _buildCardTop(context),
           sizeUtil.sizedBoxWithHeight(8),
           // image
-          Expanded(
-              child: Image.asset(
+          ExtendedImage.network(
             post.imageUrl,
-            width: double.infinity,
-            fit: BoxFit.fill,
-          )),
+            fit: BoxFit.cover,
+            cache: false,
+            loadStateChanged: (ExtendedImageState state) {
+              switch (state.extendedImageLoadState) {
+                case LoadState.loading:
+                  return Center(
+                    child: SizedBox(
+                        width: sizeUtil.width(20),
+                        height: sizeUtil.height(20),
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                        )),
+                  );
+                  break;
+                case LoadState.completed:
+                  return state.completedWidget;
+                  break;
+                case LoadState.failed:
+                  return NoImageWidget();
+                  break;
+                default:
+                  return NoImageWidget();
+              }
+            },
+          ),
+          // Expanded(
+          //     child: Image.network(
+          //   post.imageUrl,
+          //   width: double.infinity,
+          //   fit: BoxFit.fill,
+          // ),),
           sizeUtil.sizedBoxWithHeight(8),
           Text(post.body),
         ],

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_i18n/flutter_i18n.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../widgets/rounded_rect_button.dart';
 import '../widgets/upload_photo.dart';
 import '../../constants.dart';
+import '../../models/post.dart';
+import '../../blocs/post/post_bloc.dart';
 
 class AddPostDialog extends StatefulWidget {
   @override
@@ -61,7 +64,21 @@ class _AddPostDialogState extends State<AddPostDialog> {
         RoundedRectButton(
             text: FlutterI18n.translate(context, kPublish),
             isSelected: true,
-            onTap: () {})
+            onTap: () {
+              // Create a post object
+              final Post post = Post(
+                  body: 'LOVE ANIME',
+                  imageUrl:
+                      'https://occ-0-1722-1723.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABeV0Af4XqVIi8qSUEeV_llbkH9B-TyiTGukOX7pSFxAuAyoc9q-e--ErSFvK4dLjE7tYDAr1L0PXAja28cDsLWwGdA_A.jpg',
+                  userName: 'Mohamed Salama',
+                  userId: '0',
+                  date: DateTime.now());
+
+              // ADD THE POST
+              BlocProvider.of<PostBloc>(context).add(AddPost(post));
+
+              Navigator.pop(context);
+            })
       ],
     );
   }

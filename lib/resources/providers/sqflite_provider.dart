@@ -1,4 +1,6 @@
-// TODO : Will Implement This Later
+// TODO NOT : Implement This Later
+// I first decided to use sqlflite then
+// I realized a firestore will be more suitable for this task
 
 /*
 

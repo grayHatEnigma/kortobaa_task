@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kortobaa_task/constants.dart';
 
 import 'home_screen.dart';
 
@@ -39,8 +40,8 @@ class _SplashScreenState extends State<SplashScreen>
         decoration: BoxDecoration(color: Theme.of(context).accentColor),
         alignment: Alignment.center,
         child: FractionallySizedBox(
-          widthFactor: 0.6,
-          heightFactor: 0.6,
+          widthFactor: 0.5,
+          heightFactor: 0.5,
           child: Container(
             decoration: ShapeDecoration(
               color: Theme.of(context).primaryColor,
@@ -48,7 +49,10 @@ class _SplashScreenState extends State<SplashScreen>
             ),
             child: FadeTransition(
               opacity: animation,
-              child: Image.asset('assets/images/kortobaa.png'),
+              child: Image.asset(
+                'assets/images/kortobaa.png',
+                fit: BoxFit.scaleDown,
+              ),
             ),
           ),
         ),

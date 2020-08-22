@@ -17,3 +17,8 @@ const String kPublish = "Publish";
 const String kCancel = "Cancel";
 const String kTextHint = "Text Hint";
 const String kUploadPhoto = "Upload Photo";
+
+//
+
+// No Image
+const String kNoImage = "No Image Available";

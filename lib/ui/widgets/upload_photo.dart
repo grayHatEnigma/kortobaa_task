@@ -1,11 +1,14 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../constants.dart';
 
 class UploadPhoto extends StatefulWidget {
+  // post_id should be passed through the constructor
+  // cause it will be used in creating image url path in firebase stoarage
   @override
   _UploadPhotoState createState() => _UploadPhotoState();
 }
@@ -14,20 +17,11 @@ class _UploadPhotoState extends State<UploadPhoto> {
   File _image;
   final picker = ImagePicker();
 
-  // This method is for  getting post image from gallery
-  Future getImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
-
-    setState(() {
-      _image = File(pickedFile.path);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        getImage();
+        _getImage();
       },
       child: Container(
           height: sizeUtil.height(150),
@@ -61,4 +55,36 @@ class _UploadPhotoState extends State<UploadPhoto> {
           )),
     );
   }
+
+  // This method is for  getting post image from gallery
+  Future _getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      _image = File(pickedFile.path);
+    });
+  }
+
+  // TODO 0 : Implement encoding / uploading the image to cloud storage
+  // to be able to create posts with images
+
+  // Compress and Upload Image functions
+  //   compressImage() async {
+  //   final tempDir = await getTemporaryDirectory();
+  //   final path = tempDir.path;
+  //   Im.Image imageFile = Im.decodeImage(file.readAsBytesSync());
+  //   final compressedImageFile = File('$path/img_$postId.jpg')
+  //     ..writeAsBytesSync(Im.encodeJpg(imageFile, quality: 85));
+  //   setState(() {
+  //     file = compressedImageFile;
+  //   });
+  // }
+
+  // Future<String> uploadImage(imageFile) async {
+  //   StorageUploadTask uploadTask =
+  //       storageRef.child("post_$postId.jpg").putFile(imageFile);
+  //   StorageTaskSnapshot storageSnap = await uploadTask.onComplete;
+  //   String downloadUrl = await storageSnap.ref.getDownloadURL();
+  //   return downloadUrl;
+  // }
 }

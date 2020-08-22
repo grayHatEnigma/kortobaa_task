@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../models/post.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../../models/post.dart';
+
 part 'post_list_event.dart';
 part 'post_list_state.dart';
 
@@ -17,17 +19,18 @@ class PostListBloc extends Bloc<PostListEvent, PostListState> {
   Stream<PostListState> mapEventToState(
     PostListEvent event,
   ) async* {
+    print(event);
     if (event is FetchPosts) {
       yield* _fetchPosts();
     }
   }
 
   // fetch posts
-  _fetchPosts() async* {
+  Stream<PostListState> _fetchPosts() async* {
     yield PostListLoading();
 
     try {
-      yield _firestore
+      yield* _firestore
           .collection('posts')
           .snapshots()
           .transform(queryTransformer);
@@ -37,7 +40,7 @@ class PostListBloc extends Bloc<PostListEvent, PostListState> {
   }
 }
 
-// Stream Transformer to transform from one stream type QuerySnapshot to another PostListSccuess Stream
+// Stream Transformer to transform from one stream type 'QuerySnapshot' to another 'PostListSccuess' Stream
 final queryTransformer =
     StreamTransformer<QuerySnapshot, PostListState>.fromHandlers(
         handleData: (snapshot, sink) {
@@ -45,7 +48,7 @@ final queryTransformer =
       .map(
         (doc) => Post.fromDocument(
           doc.data(),
-        ),
+        )..postId = doc.id,
       )
       .toList();
   sink.add(PostListSuccess(transformedList));

@@ -9,6 +9,7 @@
     "Publish": "Publish",
     "Cancel":"Cancel",
     "Text Hint" : "add photo description",
-    "Upload Photo" : "Upload photo"
+    "Upload Photo" : "Upload photo" ,
+    "No Image Available": "No Image Available"
 
 }

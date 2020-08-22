@@ -4,11 +4,13 @@ import 'package:rxdart/rxdart.dart';
 
 import 'bloc_base.dart';
 
-/// Here I used The Rx-Stream approach in implementing the bloc pattern
+// Here I used The Rx-Stream approach in implementing the bloc pattern
+// maybe I will replace this approach with the new Cubit concept from bloc_package
+// but for now I will keep do this
 
-// *** This Bloc is responsible of changing app bar title / hiding FAB according to the tab ***
+// *** This Bloc is responsible of changing app bar title / hiding FAB according to the selected tab ***
 // it may seem an over-kill to use bloc here as this could easily be done with setState
-// but I think it is necessary for future use cases to reduce the number of rebuilds.
+// but I think it is necessary for future use cases to reduce the number of rebuilds in the entire screen.
 
 class PageBloc implements BlocBase {
 // *** Controllers ***

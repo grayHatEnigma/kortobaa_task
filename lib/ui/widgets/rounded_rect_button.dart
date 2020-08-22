@@ -26,7 +26,9 @@ class RoundedRectButton extends StatelessWidget {
             child: Text(
               text,
               style: TextStyle(
-                  fontSize: 14, color: textColor, fontWeight: FontWeight.w600),
+                  fontSize: sizeUtil.size(13.5),
+                  color: textColor,
+                  fontWeight: FontWeight.w600),
             ),
           )),
     );

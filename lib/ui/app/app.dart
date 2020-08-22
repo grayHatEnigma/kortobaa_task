@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kortobaa_task/blocs/post/post_bloc.dart';
+import 'package:kortobaa_task/blocs/post_list/post_list_bloc.dart';
+import 'package:kortobaa_task/blocs/user/user_bloc.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
@@ -27,6 +31,12 @@ class App extends StatelessWidget {
         Provider(
           create: (_) => LocalizationBloc(),
           dispose: (_, bloc) => bloc.dispose(),
+        ),
+        BlocProvider(
+          create: (_) => UserBloc(),
+        ),
+        BlocProvider(
+          create: (_) => PostBloc(),
         ),
       ],
       child: Builder(

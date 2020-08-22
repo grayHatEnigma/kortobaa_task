@@ -2,24 +2,33 @@ part of 'post_list_bloc.dart';
 
 abstract class PostListState extends Equatable {
   const PostListState();
-
-  @override
-  List<Object> get props => [];
 }
 
 class PostListInitial extends PostListState {
   final posts = [];
+
+  @override
+  List<Object> get props => [posts];
 }
 
 class PostListSuccess extends PostListState {
   final List<Post> posts;
   PostListSuccess(this.posts);
+
+  @override
+  List<Object> get props => [posts.length];
 }
 
-class PostListLoading extends PostListState {}
+class PostListLoading extends PostListState {
+  @override
+  List<Object> get props => [];
+}
 
 class PostListFailure extends PostListState {
   final String message;
 
   PostListFailure(this.message);
+
+  @override
+  List<Object> get props => [message];
 }

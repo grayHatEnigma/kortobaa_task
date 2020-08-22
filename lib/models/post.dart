@@ -1,10 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart' show Timestamp;
+
 class Post {
   String postId;
   String userId;
   String userName;
   String imageUrl;
   String body;
-  DateTime timestamp;
+  DateTime date;
 
   Post({
     this.userId,
@@ -12,14 +14,24 @@ class Post {
     this.postId,
     this.imageUrl,
     this.body,
-    this.timestamp,
+    this.date,
   });
 
   Post.fromDocument(Map<String, dynamic> doc) {
     userName = doc['userName'];
     userId = doc['userId'];
     body = doc['body'];
-    timestamp = doc['timestamp'];
+    date = doc['timestamp'].toDate();
     imageUrl = doc['imageUrl'];
+  }
+
+  Map<String, dynamic> toDocument() {
+    return {
+      'userName': userName,
+      'userId': userId,
+      'body': body,
+      'timestamp': Timestamp.fromDate(date),
+      'imageUrl': imageUrl
+    };
   }
 }
