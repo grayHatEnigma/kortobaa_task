@@ -26,6 +26,7 @@ dependencies:
 
   # UI
   intl: ^0.16.1
+  fluttertoast: ^6.0.1
 
   # APIs
   #http: ^0.12.2

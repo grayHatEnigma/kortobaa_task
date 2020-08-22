@@ -11,4 +11,20 @@ class User {
     this.email,
     this.imageUrl,
   });
+
+  User.fromDocument(Map<String, dynamic> doc) {
+    name = doc['name'];
+    userId = doc['userId'];
+    email = doc['email'];
+    imageUrl = doc['imageUrl'];
+  }
+
+  Map<String, dynamic> toDocument() {
+    return {
+      'name': name,
+      'userId': userId,
+      'email': email,
+      'imageUrl': imageUrl
+    };
+  }
 }

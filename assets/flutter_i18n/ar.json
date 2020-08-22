@@ -9,6 +9,16 @@
     "Cancel":"تجاهل",
     "Text Hint" : "اكتب تعليقاً حول الصورة",
     "Upload Photo" : "اختر صورة" ,
-    "No Image Available" : "لا يوجد صورة"
+    "No Image Available" : "لا يوجد صورة" ,
+
+
+    "Name is too short" : "الاسم قصير جداً",
+    "Please enter a valid email" : "من فضلك أدخل بريد إلكتروني صحيح",
+    "Enter Your Data To Continue" : "ادخل بياناتك للمتابعة",
+    "Enter Name" : "الاسم",
+    "Enter Email" : "البريد الاكتروني",
+    "Save" : "حفظ",
+    "Please Enter a valid data first" : "ادخل بيانات صحيحة أولاً"
+
 
 }

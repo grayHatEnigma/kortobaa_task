@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kortobaa_task/blocs/post/post_bloc.dart';
-import 'package:kortobaa_task/blocs/post_list/post_list_bloc.dart';
 import 'package:kortobaa_task/blocs/user/user_bloc.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +13,6 @@ import 'theme.dart';
 import 'routes.dart';
 import '../screens/splash_screen.dart';
 import '../../constants.dart';
-import '../../blocs/page_bloc.dart';
 import '../../blocs/localization_bloc.dart';
 
 class App extends StatelessWidget {
@@ -24,10 +22,6 @@ class App extends StatelessWidget {
     // depends on Remi 's Provider package underneath
     return MultiProvider(
       providers: [
-        Provider(
-          create: (_) => PageBloc(),
-          dispose: (_, bloc) => bloc.dispose(),
-        ),
         Provider(
           create: (_) => LocalizationBloc(),
           dispose: (_, bloc) => bloc.dispose(),

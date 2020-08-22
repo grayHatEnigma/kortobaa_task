@@ -8,7 +8,7 @@ class RoundedRectButton extends StatelessWidget {
   final bool isSelected;
 
   const RoundedRectButton(
-      {@required this.text, @required this.onTap, this.isSelected});
+      {@required this.text, @required this.onTap, this.isSelected = true});
   @override
   Widget build(BuildContext context) {
     final textColor = isSelected ? Colors.white : Colors.grey;
@@ -16,7 +16,7 @@ class RoundedRectButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-          width: sizeUtil.width(80),
+          width: sizeUtil.width(100),
           padding: EdgeInsets.symmetric(vertical: sizeUtil.height(5)),
           decoration: BoxDecoration(
             color: btnColor,
@@ -26,7 +26,7 @@ class RoundedRectButton extends StatelessWidget {
             child: Text(
               text,
               style: TextStyle(
-                  fontSize: sizeUtil.size(13.5),
+                  fontSize: sizeUtil.size(14.5),
                   color: textColor,
                   fontWeight: FontWeight.w600),
             ),

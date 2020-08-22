@@ -10,6 +10,15 @@
     "Cancel":"Cancel",
     "Text Hint" : "add photo description",
     "Upload Photo" : "Upload photo" ,
-    "No Image Available": "No Image Available"
+    "No Image Available": "No Image Available",
+
+
+    "Name is too short" : "Name is too short",
+    "Please enter a valid email" : "Please enter a valid email",
+    "Enter Your Data To Continue" :  "Enter Your Data To Continue",
+    "Enter Name" : "Enter Name",
+    "Enter Email" :  "Enter Email",
+    "Save" : "Save",
+    "Please Enter a valid data first" : "Please Enter a valid data first"
 
 }

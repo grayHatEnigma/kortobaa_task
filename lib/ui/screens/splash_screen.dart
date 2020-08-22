@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kortobaa_task/constants.dart';
+import 'package:kortobaa_task/ui/screens/user_data_screen.dart';
 
 import 'home_screen.dart';
 
@@ -28,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     controller.addListener(() {
       if (controller.isCompleted) {
-        Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+        Navigator.pushReplacementNamed(context, UserDataScreen.routeName);
       }
     });
   }

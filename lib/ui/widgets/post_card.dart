@@ -13,7 +13,6 @@ class PostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //  height: 300,
       margin: EdgeInsets.symmetric(
           horizontal: sizeUtil.width(25), vertical: sizeUtil.height(10)),
       padding: EdgeInsets.symmetric(
@@ -67,12 +66,7 @@ class PostCard extends StatelessWidget {
               }
             },
           ),
-          // Expanded(
-          //     child: Image.network(
-          //   post.imageUrl,
-          //   width: double.infinity,
-          //   fit: BoxFit.fill,
-          // ),),
+
           sizeUtil.sizedBoxWithHeight(8),
           Text(post.body),
         ],
