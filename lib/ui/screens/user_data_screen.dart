@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter_i18n/flutter_i18n.dart';
-
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:kortobaa_task/blocs/user/user_bloc.dart';
-import 'package:kortobaa_task/models/user.dart';
-import 'package:kortobaa_task/utilities/device_info_utility.dart';
 import 'package:provider/provider.dart';
+
+import 'home_screen.dart';
+import '../widgets/rounded_rect_button.dart';
+import '../../blocs/user/user_bloc.dart';
+import '../../models/user.dart';
+import '../../utilities/device_info_utility.dart';
 import '../../constants.dart';
 import '../../blocs/data_validation_bloc.dart';
-import '../widgets/rounded_rect_button.dart';
-import 'home_screen.dart';
+
+// TODO 0 : Add button to select and upload user profile image
 
 class UserDataScreen extends StatefulWidget {
   static final routeName = 'user_data';

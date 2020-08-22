@@ -39,33 +39,34 @@ class PostCard extends StatelessWidget {
           _buildCardTop(context),
           sizeUtil.sizedBoxWithHeight(8),
           // image
-          ExtendedImage.network(
-            post.imageUrl,
-            fit: BoxFit.cover,
-            cache: false,
-            loadStateChanged: (ExtendedImageState state) {
-              switch (state.extendedImageLoadState) {
-                case LoadState.loading:
-                  return Center(
-                    child: SizedBox(
-                        width: sizeUtil.width(20),
-                        height: sizeUtil.height(20),
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                        )),
-                  );
-                  break;
-                case LoadState.completed:
-                  return state.completedWidget;
-                  break;
-                case LoadState.failed:
-                  return NoImageWidget();
-                  break;
-                default:
-                  return NoImageWidget();
-              }
-            },
-          ),
+          if (post.imageUrl != null)
+            ExtendedImage.network(
+              post.imageUrl,
+              width: double.infinity,
+              fit: BoxFit.contain,
+              cache: false,
+              loadStateChanged: (ExtendedImageState state) {
+                switch (state.extendedImageLoadState) {
+                  case LoadState.loading:
+                    return Center(
+                      child: SizedBox(
+                          width: sizeUtil.width(20),
+                          height: sizeUtil.height(20),
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                          )),
+                    );
+                    break;
+                  case LoadState.completed:
+                    return state.completedWidget;
+                    break;
+
+                  default:
+                    return NoImageWidget();
+                }
+              },
+            ),
+          if (post.imageUrl == null) NoImageWidget(),
 
           sizeUtil.sizedBoxWithHeight(8),
           Text(post.body),
@@ -98,29 +99,44 @@ class PostCard extends StatelessWidget {
                     ? NetworkImage(post.userImageUrl)
                     : null,
               ),
-              sizeUtil.sizedBoxWithWidth(8),
-              Text(post.userName),
+              sizeUtil.sizedBoxWithWidth(5),
+              Text(
+                post.userName,
+                style: TextStyle(
+                  fontSize: sizeUtil.size(14),
+                ),
+              ),
             ],
           ),
+          sizeUtil.sizedBoxWithWidth(5),
           // buttons row
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              InkWell(
-                onTap: () {},
-                child: Icon(Icons.share, color: Colors.grey[600]),
-              ),
-              sizeUtil.sizedBoxWithWidth(15),
-              InkWell(
-                onTap: () {},
-                child: Icon(Icons.turned_in, color: Colors.grey[600]),
-              ),
-              sizeUtil.sizedBoxWithWidth(15),
-              InkWell(
-                onTap: () {},
-                child: Icon(Icons.favorite, color: Colors.grey[600]),
-              ),
-            ],
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () {},
+                    child: Icon(Icons.share,
+                        size: sizeUtil.size(18), color: Colors.grey[600]),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () {},
+                    child: Icon(Icons.turned_in,
+                        size: sizeUtil.size(18), color: Colors.grey[600]),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () {},
+                    child: Icon(Icons.favorite,
+                        size: sizeUtil.size(18), color: Colors.grey[600]),
+                  ),
+                ),
+              ],
+            ),
           )
         ],
       ),

@@ -1,12 +1,15 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../constants.dart';
 
 class UploadPhoto extends StatefulWidget {
+  final Function(File) chosenImage;
+
+  const UploadPhoto({this.chosenImage});
+
   // post_id should be passed through the constructor
   // cause it will be used in creating image url path in firebase stoarage
   @override
@@ -62,14 +65,14 @@ class _UploadPhotoState extends State<UploadPhoto> {
 
     setState(() {
       _image = File(pickedFile.path);
+      widget.chosenImage(_image);
     });
   }
 
-  // TODO 0 : Implement encoding / uploading the image to cloud storage
-  // to be able to create posts with images
+  // TODO Later : Implement image commpression to reduce traffic / storage usage
 
-  // Compress and Upload Image functions
-  //   compressImage() async {
+  // // Compress and Upload Image functions
+  // compressImage() async {
   //   final tempDir = await getTemporaryDirectory();
   //   final path = tempDir.path;
   //   Im.Image imageFile = Im.decodeImage(file.readAsBytesSync());
@@ -80,11 +83,4 @@ class _UploadPhotoState extends State<UploadPhoto> {
   //   });
   // }
 
-  // Future<String> uploadImage(imageFile) async {
-  //   StorageUploadTask uploadTask =
-  //       storageRef.child("post_$postId.jpg").putFile(imageFile);
-  //   StorageTaskSnapshot storageSnap = await uploadTask.onComplete;
-  //   String downloadUrl = await storageSnap.ref.getDownloadURL();
-  //   return downloadUrl;
-  // }
 }

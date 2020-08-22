@@ -25,7 +25,7 @@ class ProfilePage extends StatelessWidget {
           overflow: Overflow.visible,
           children: [
             Container(
-              height: sizeUtil.size(175),
+              height: sizeUtil.height(175),
               decoration: BoxDecoration(
                 color: Theme.of(context).accentColor,
                 boxShadow: [

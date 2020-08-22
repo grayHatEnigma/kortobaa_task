@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 // I use it along with some vs code snippets I made
 // To increase my speed and keep my apps as responsive as possible
 
+// The idea behind it, is that I design on a device let's say Pixel 2
+// this device become the reference device and it's dimensions is hard-coded here
+// then each time a user use its device his (screen width / height ) is provided here
+// then the ratio calculation is pretty straight forward after this as you see here
+
 class SizeUtil {
   factory SizeUtil() => _singleton;
   static final SizeUtil _singleton = SizeUtil._();
