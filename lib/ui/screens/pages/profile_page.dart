@@ -4,7 +4,7 @@ import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
-import '../../../blocs/page_bloc.dart';
+import '../../../managers/page_manager.dart';
 import '../../widgets/profile_button.dart';
 import '../../../models/user.dart';
 
@@ -15,7 +15,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Change app bar title according to the current viewed tab,
-    Provider.of<PageBloc>(context)..changePage(MyPage.profile);
+    _changePage(context);
 
     // Profile Image Size
     double profileSize = 55;
@@ -87,6 +87,13 @@ class ProfilePage extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void _changePage(context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<PageManager>(context, listen: false)
+          .changePage(MyPage.profile);
+    });
   }
 }
 

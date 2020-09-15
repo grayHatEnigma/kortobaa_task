@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flare_flutter/flare_actor.dart';
 import 'decision_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -8,28 +8,21 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
-  final duration = const Duration(milliseconds: 3500);
-
+class _SplashScreenState extends State<SplashScreen> {
+  final duration = const Duration(milliseconds: 2500);
+  String animationName = 'loading';
   @override
   void initState() {
+    Future.delayed(duration).whenComplete(
+      () {
+        setState(() {
+          animationName = 'success';
+        });
+        Future.delayed(Duration(milliseconds: 1100)).whenComplete(() =>
+            Navigator.pushReplacementNamed(context, DecisionScreen.routeName));
+      },
+    );
     super.initState();
-    controller = AnimationController(vsync: this, duration: duration);
-    animation = Tween(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(controller);
-
-    controller.forward();
-
-    controller.addListener(() {
-      if (controller.isCompleted) {
-        Navigator.pushReplacementNamed(context, DecisionScreen.routeName);
-      }
-    });
   }
 
   @override
@@ -41,17 +34,11 @@ class _SplashScreenState extends State<SplashScreen>
         child: FractionallySizedBox(
           widthFactor: 0.5,
           heightFactor: 0.5,
-          child: Container(
-            decoration: ShapeDecoration(
-              color: Theme.of(context).primaryColor,
-              shape: CircleBorder(),
-            ),
-            child: FadeTransition(
-              opacity: animation,
-              child: Image.asset(
-                'assets/images/kortobaa.png',
-                fit: BoxFit.scaleDown,
-              ),
+          child: GestureDetector(
+            onTap: () {},
+            child: FlareActor(
+              'assets/animations/loading_success_error.flr',
+              animation: animationName,
             ),
           ),
         ),

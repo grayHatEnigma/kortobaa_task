@@ -1,41 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
-
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../constants.dart';
 import '../../widgets/post_card.dart';
-import '../../../blocs/page_bloc.dart';
-import '../../../blocs/post_list/post_list_bloc.dart';
+import '../../../managers/page_manager.dart';
+import '../../../managers/post_list/post_list_manager.dart';
 import '../../../models/post.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Change app bar title according to the current viewed tab,
-    Provider.of<PageBloc>(context)..changePage(MyPage.home);
+    //                                      <-- fetch posts / change page
+    _postBuildLogic(context);
 
-    // Start fetching posts feed from firestore
-    BlocProvider.of<PostListBloc>(context)..add(FetchPosts());
+    final postsManager =
+        Provider.of<PostListManager>(context); //          <-- posts manager
 
-    return BlocBuilder<PostListBloc, PostListState>(
-      builder: (context, state) {
-        if (state is PostListSuccess) {
-          return PostsList(posts: state.posts);
-        }
-        if (state is PostListFailure) {
-          return Center(
-            child: Text(
-              state.message,
-              style: TextStyle(fontSize: sizeUtil.size(22), color: Colors.grey),
-            ),
-          );
-        }
-        return Center(
-          child: CircularProgressIndicator(),
-        );
-      },
-    );
+    return StateNotifierBuilder<PostListState>(
+        builder: (_, state, __) {
+          return (state is PostListSuccess)
+              ? PostsList(posts: state.posts)
+              : (state is PostListFailure)
+                  ? Center(
+                      child: Text(
+                        state.message,
+                        style: TextStyle(
+                            fontSize: sizeUtil.size(22), color: Colors.grey),
+                      ),
+                    )
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    );
+        },
+        stateNotifier: postsManager);
+  }
+
+  void _postBuildLogic(context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<PageManager>(context, listen: false).changePage(MyPage.home);
+      Provider.of<PostListManager>(context, listen: false).fetchPosts();
+    });
   }
 }
 

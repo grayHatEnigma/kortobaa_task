@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 
 import 'package:provider/provider.dart';
 
@@ -6,9 +7,9 @@ import '../screens/splash_screen.dart';
 import '../screens/user_data_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/decision_screen.dart';
-import '../../blocs/post_list/post_list_bloc.dart';
+import '../../managers/post_list/post_list_manager.dart';
 import '../../blocs/post/post_bloc.dart';
-import '../../blocs/page_bloc.dart';
+import '../../managers/page_manager.dart';
 import '../../blocs/data_validation_bloc.dart';
 
 final routes = {
@@ -20,15 +21,14 @@ final routes = {
         child: UserDataScreen(),
       ),
   HomeScreen.routeName: (context) => MultiProvider(providers: [
-        BlocProvider(
-          create: (context) => PostListBloc(),
+        StateNotifierProvider<PostListManager, PostListState>(
+          create: (context) => PostListManager(),
         ),
         BlocProvider(
           create: (context) => PostBloc(),
         ),
-        Provider(
-          create: (_) => PageBloc(),
-          dispose: (_, bloc) => bloc.dispose(),
+        ChangeNotifierProvider(
+          create: (_) => PageManager(),
         ),
       ], child: HomeScreen()),
 };

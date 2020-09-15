@@ -1,4 +1,4 @@
-part of 'post_list_bloc.dart';
+part of 'post_list_manager.dart';
 
 abstract class PostListState extends Equatable {
   const PostListState();

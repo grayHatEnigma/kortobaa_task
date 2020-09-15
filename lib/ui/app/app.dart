@@ -11,7 +11,7 @@ import 'theme.dart';
 import 'routes.dart';
 import '../screens/splash_screen.dart';
 import '../../constants.dart';
-import '../../blocs/localization_bloc.dart';
+import '../../managers/localization_manager.dart';
 import '../../blocs/post/post_bloc.dart';
 import '../../blocs/user/user_bloc.dart';
 
@@ -22,9 +22,8 @@ class App extends StatelessWidget {
     // depends on Remi 's Provider package underneath
     return MultiProvider(
       providers: [
-        Provider(
-          create: (_) => LocalizationBloc(),
-          dispose: (_, bloc) => bloc.dispose(),
+        ChangeNotifierProvider(
+          create: (_) => LocalizationManager(),
         ),
         BlocProvider(
           create: (_) => UserBloc(),
@@ -35,13 +34,11 @@ class App extends StatelessWidget {
       ],
       child: Builder(
         builder: (context) {
-          final localizationBloc = Provider.of<LocalizationBloc>(context);
-          return StreamBuilder<Locale>(
-            stream: localizationBloc.selectedLocale,
-            builder: (context, snapshot) {
+          return Consumer<LocalizationManager>(
+            builder: (_, localeManager, __) {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
-                locale: snapshot.data,
+                locale: localeManager.locale,
                 localizationsDelegates: [
                   FlutterI18nDelegate(
                     translationLoader: FileTranslationLoader(
